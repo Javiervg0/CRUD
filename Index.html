@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="myApp" ng-controller="myController">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Biblioteca AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <!-- Biblioteca jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- JavaScript de Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- JavaScript personalizado -->
+    <script src="js.js"></script>
+</head>
+<body>
+    <title> CRUD </title>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <hr>
+                <h3 class="text-center">CRUD </h3>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-info pull-right" data-toggle="modal" data-target="#addModal">Agregar Nuevo</button>
+                <div class="alert alert-warning fade in myAlert" ng-if="alertMassege">
+                    <a href="#" class="close" data-dismiss="alert" ng-click="clickedAlert()">×</a>
+                    <h4>{{alertMassege}}</h4>
+                </div>
+                <table class="table table-bordered myTable">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Índice</th>
+                            <th>Nombre</th>
+                            <th>Nombre Completo</th>
+                            <th>Correo Electrónico</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="user in users">
+                            <td>{{$index + 1}}</td>
+                            <td>{{user.name}}</td>
+                            <td>{{user.fullname}}</td>
+                            <td>{{user.email}}</td>
+                            <td>
+                                <button class="btn btn-warning" data-toggle="modal" data-target="#editModal" ng-click="selectUser(user)">Editar</button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" ng-click="selectUser(user)">Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+  
+    <div id="addModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Agregar Nuevo</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="Name">Nombre</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" placeholder="Ingresa el nombre" ng-model="newUser.name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="full name">Nombre Completo</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" placeholder="Ingresa el nombre completo" ng-model="newUser.fullname">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="email">Correo</label>
+                                <div class="col-sm-3">
+                                    <input type="email" class="form-control" placeholder="Ingresa el correo" ng-model="newUser.email">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-click="saveUser()" data-dismiss="modal">Guardar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="editModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">Editar</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="Name">Nombre</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" ng-model="clickedUser.name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="full name">Nombre Completo</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" ng-model="clickedUser.fullname">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="email">Correo</label>
+                                <div class="col-sm-3">
+                                    <input type="email" class="form-control" ng-model="clickedUser.email">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-click="updateUser()" data-dismiss="modal">Guardar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="deleteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                    <h4 class="modal-title">Eliminar</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>¿Estás seguro de eliminar a <span>{{clickedUser.fullname}}</span>?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" ng-click="deleteUser()" data-dismiss="modal">Sí</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

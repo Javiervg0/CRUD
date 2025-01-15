@@ -1,0 +1,130 @@
+body {
+    background: linear-gradient(135deg, #000000, #0331ff); 
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    color: #000000;
+    text-shadow: 2px 2px 4px rgba(38, 0, 255, 0.5);
+    font-weight: bold;
+}
+
+.container {
+    background: #f8f8f8; 
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+button {
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-info {
+    background-color: #5bc0de;
+    border: none;
+}
+
+.btn-info:hover {
+    background-color: #31b0d5;
+}
+
+.btn-warning {
+    background-color: #f0ad4e;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #ec971f;
+}
+
+.btn-danger {
+    background-color: #d9534f;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c9302c;
+}
+
+.btn-primary {
+    background-color: #428bca;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #3071a9;
+}
+
+/* Tablas */
+.myTable {
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+.myTable thead {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.myTable th, .myTable td {
+    text-align: center;
+    padding: 10px;
+}
+
+.myTable tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.myTable tbody tr:nth-child(even) {
+    background-color: #e9ecef;
+}
+
+.myTable tbody tr:hover {
+    background-color: #d6d8db;
+}
+
+/* Modales */
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background-color: #00303f;
+    color: rgb(46, 151, 192);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.modal-footer button {
+    border-radius: 20px;
+}
+
+/* Alertas */
+.myAlert {
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c6cb;
+}
+
+.myAlert h4 {
+    margin: 0;
+}
+
+input::placeholder {
+    color: #bbb;
+    font-style: italic;
+}
